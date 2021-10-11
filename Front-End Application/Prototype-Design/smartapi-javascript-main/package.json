@@ -1,0 +1,24 @@
+{
+  "name": "smartapi-javascript",
+  "version": "1.0.14",
+  "description": "",
+  "main": "./lib/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angelbroking-github/smartapi-javascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "address": "^1.1.2",
+    "atob": "^2.1.2",
+    "axios": "^0.20.0",
+    "pako": "^2.0.0",
+    "public-ip": "^4.0.2",
+    "querystring": "^0.2.0",
+    "ws": "^7.4.0"
+  }
+}

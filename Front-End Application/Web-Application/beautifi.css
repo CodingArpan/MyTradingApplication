@@ -1,0 +1,833 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif, Noto Sans, Open Sans, Nunito;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #202634;
+  user-select: none;
+}
+
+.menulist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  background-color: #0d0d0d;
+  width: 260px;
+  height: 100%;
+  box-shadow: 0 0 0 8px #1f85f6;
+}
+
+#logo {
+  position: relative;
+  margin: 25px 30px 60px 30px;
+  color: aliceblue;
+  line-height: 40px;
+  font-size: 39px;
+  font-weight: bold;
+  border: 2px solid #0044ff;
+  border-radius: 32px;
+  padding: 5px 25px;
+}
+
+#logo span {
+  color: #0077ff;
+  font-size: 42px;
+}
+
+ul.sidemenu {
+  position: relative;
+  margin: 0 0 0 20px;
+}
+
+ul.sidemenu li {
+  position: relative;
+  list-style: none;
+  color: aliceblue;
+  margin: 15px 0;
+  padding: 15px 0;
+  cursor: pointer;
+  height: 45px;
+}
+ul.sidemenu li i {
+  position: relative;
+  float: left;
+  margin: 0px 10px;
+  font-size: 20px;
+  text-align: center;
+}
+ul.sidemenu li p {
+  position: absolute;
+  float: left;
+  left: 50px;
+  font-size: 15px;
+}
+ul.sidemenu li span {
+  position: absolute;
+  float: right;
+  right: 20px;
+  background-color: white;
+  color: #008cff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+ul.sidemenu li.active {
+  background-color: #1f85f6;
+  border-radius: 20px 0 0 20px;
+}
+ul.sidemenu li.active::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: #0d0d0d;
+  /* background-color: #f5f5f5; */
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  border-radius: 0 19px 0 19px;
+  box-shadow: 5px -6px 0 #1f85f6;
+}
+ul.sidemenu li.active::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: #0d0d0d;
+  /* background-color: #ffffff; */
+  position: absolute;
+  top: -30px;
+  right: 0;
+  border-radius: 19px 0 19px 0;
+  box-shadow: 5px 6px 0 #1f85f6;
+}
+
+/* -------- Sidebar Menu Design----------*/
+
+.container .board {
+  position: absolute;
+  width: calc(100vw - 280px);
+  top: 5px;
+  left: 280px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.container .board .story {
+  position: relative;
+  width: 230px;
+  height: 90px;
+  background-color: #293042;
+  margin: 10px 5px;
+  border-radius: 10px;
+  flex-shrink: 1;
+  padding: 3px;
+}
+
+.board .story .txt {
+  position: relative;
+  width: 60%;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(224, 224, 224);
+  position: absolute;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.board .story .change {
+  position: absolute;
+  width: 32%;
+  height: 80%;
+  /* background-color: #4bbf7431; */
+  border-radius: 10%;
+  margin: 5px 10px;
+  float: right;
+  right: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 550;
+  /* color: #38cc6b; */
+  padding: 5px;
+  line-height: 30px;
+}
+.board .story .change span {
+  position: relative;
+  font-size: 20px;
+}
+.board .story .pre {
+  position: absolute;
+  font-size: 15px;
+  bottom: 0;
+  font-weight: 500;
+  margin: 10px 3px;
+  line-height: 20px;
+  border-radius: 5px;
+  padding: 3px 5px;
+  /* color: #d9534f; */
+  /* background-color: #d9544f23; */
+}
+.board .niftysmallcap50 .txt {
+  margin-left: 0;
+}
+
+/* -----------------top board design------------------------- */
+
+.container .togglewindow {
+  position: absolute;
+  width: calc(100vw - 290px);
+  height: calc(100vh - 140px);
+  background-color: #202634;
+  box-shadow: 0 0 10px 0 #00000079;
+  left: 280px;
+  top: 125px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+.market-overview {
+  background-color: #202634;
+  /* background-color: #12285a; */
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+  gap: 20px;
+}
+/* -------------------------------------- */
+.togglewindow .market-overview .indicetable {
+  grid-row: 1/31;
+  grid-column: 1/8;
+  background-color: #293042;
+  border-radius: 10px;
+}
+.market-overview .indicetable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.market-overview .indicetable table thead {
+  height: 50px;
+}
+
+.market-overview .indicetable table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 5px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.315);
+  color: rgb(148, 148, 148);
+  font-size: 15px;
+}
+
+.togglewindow .market-overview .balance {
+  position: relative;
+  grid-row: 1/4;
+  grid-column: 8/11;
+  background-color: #293042;
+  border-radius: 10px;
+  padding: 5px;
+}
+.togglewindow .market-overview .balance .amount {
+  position: absolute;
+  bottom:10px;
+  width: 100%;
+  height: 60%;
+  font-size: 35px;
+  text-align: center;
+  color: rgb(211, 211, 211);
+  padding: 5px;
+  margin: auto;
+}
+
+.togglewindow .market-overview .balance .label {
+  position: relative;
+  /* bottom:0; */
+  font-size: 12px;
+  text-align: center;
+  color: rgb(165, 165, 165);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.479); */
+}
+
+/* ---------------------------------------------- */
+
+.togglewindow .market-overview .copy {
+  position: relative;
+  grid-row: 1/4;
+  grid-column: 11/21;
+  background-color: #293042;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.togglewindow .market-overview .copy .clipboard {
+  position: relative;
+  float: left;
+  background-color: #202634;
+  color: rgb(189, 189, 189);
+  width: 20%;
+  height: 85%;
+  padding: 2% 0;
+  margin: 5px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+.togglewindow .market-overview .copy .list {
+  position: absolute;
+  float: right;
+  padding: 3px;
+  right: 10px;
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(21, 105, 216) rgb(255, 255, 255);
+}
+
+/* ---------------------------------------------- */
+
+.togglewindow .market-overview .profit_loss {
+  grid-row: 4/15;
+  grid-column: 8/15;
+  background-color: #293042;
+  border-radius: 10px;
+}
+.togglewindow .market-overview .notes {
+  grid-row: 4/15;
+  grid-column: 15/21;
+  background-color: #293042;
+  border-radius: 10px;
+  padding: 5px;
+}
+.togglewindow .market-overview .notes .headbar {
+  position: relative;
+  width: 100%;
+  background-color: #202634;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 10px 10px 0 0;
+  color: rgb(168, 166, 166);
+}
+.togglewindow .market-overview .notes .headbar i {
+  position: relative;
+  float: left;
+  padding: 6px 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.togglewindow .market-overview .notes .headbar input {
+  position: relative;
+  float: right;
+  padding: 2px;
+  margin: 3px;
+  border: none;
+  border-bottom: 1px solid rgb(105, 105, 105);
+  background-color: transparent;
+  /* font-size: 20px; */
+  cursor: pointer;
+  color: rgb(172, 172, 172);
+}
+
+/* -------------------------------------------- */
+
+.togglewindow .market-overview .otherdetails {
+  grid-row: 15/31;
+  grid-column: 8/21;
+  background-color: #293042;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.togglewindow .market-overview .otherdetails .tabwrap {
+  list-style: none;
+  padding: 5px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.otherdetails .tabwrap input[type="radio"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.otherdetails .tabwrap li.tabitem {
+  float: left;
+  display: block;
+}
+.otherdetails .tabwrap li.tabitem label {
+  display: inline-block;
+  background-color: #0d47a1;
+  color: rgb(158, 158, 158);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  margin-right: 20px;
+}
+
+.otherdetails .tabwrap li.tabitem .tabcontent {
+  background-color: #202634;
+  padding: 5px;
+  border-radius: 0 10px 10px 10px;
+  position: absolute;
+  top: 38px;
+  left: 0;
+  margin: 5px;
+  display: none;
+  width: calc(100% - 10px);
+  height: calc(100% - 45px);
+  overflow: auto;
+}
+.tabwrap input[id^="tab"]:checked + label {
+  background-color: #202634;
+  color: rgb(216, 216, 216);
+  transition: 0.2s;
+}
+.tabwrap input[id^="tab"]:checked ~ .tabcontent {
+  display: block;
+  transition: 0.2s;
+}
+
+/* ------------------------------------------------ */
+
+.buy-now {
+  background-color: #293042;
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 10px;
+  border-radius: 10px;
+}
+.sell-now {
+  background-color: #293042;
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 10px;
+  border-radius: 10px;
+}
+.buy-sell {
+  background-color: #293042;
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+ul[class*="tab-wrap"] {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+ul[class*="tab-wrap"] input[type="radio"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+ul[class*="tab-wrap"] li {
+  float: left;
+  display: block;
+}
+ul[class*="tab-wrap"] label {
+  background-color: #202634;
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 0 15px 0 0;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  color: #ffffff;
+  font-weight: 500;
+}
+ul[class*="tab-wrap"] label span {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  color: #007df9;
+  font-weight: 600;
+}
+ul[class*="tab-wrap"] .scanner-content-table {
+  background-color: #14171d;
+  padding: 0px 0px;
+  border-radius: 0 5px 5px 5px;
+  position: absolute;
+  left: 0;
+  color: rgb(175, 175, 175);
+  width: 100%;
+  height: 95%;
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(21, 105, 216) rgb(255, 255, 255);
+}
+
+.buy-now ul[class*="tab-wrap"] input[type="radio"]:checked + label {
+  background-color: #52921b;
+  color: #ffffff;
+}
+.sell-now ul[class*="tab-wrap"] input[type="radio"]:checked + label {
+  background-color: #ce7b1c;
+  color: #ffffff;
+}
+.buy-sell ul[class*="tab-wrap"] input[type="radio"]:checked + label {
+  background-color: rgb(145, 145, 145);
+  color: #ffffff;
+}
+ul[class*="tab-wrap"] input[type="radio"]:checked ~ .scanner-content-table {
+  display: block;
+}
+
+.scanner-content-table table {
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+}
+.scanner-content-table table thead tr {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 5px;
+}
+
+.buy-now .scanner-content-table table thead tr {
+  width: 100%;
+  background-color: #72bc31;
+  color: rgb(0, 0, 0);
+}
+.sell-now .scanner-content-table table thead tr {
+  width: 100%;
+  background-color: #cb5520;
+  color: rgb(0, 0, 0);
+}
+.buy-sell .scanner-content-table table thead tr {
+  width: 100%;
+  background-color: rgb(87, 87, 87);
+  color: rgb(0, 0, 0);
+}
+.scanner-content-table tr {
+  transition: all 0.05s ease-in;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.scanner-content-table table tbody tr:hover {
+  background-color: #0000005e;
+  transform: scale(1);
+  transition: 0.05s;
+}
+.scanner-content-table th {
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+.scanner-content-table th,
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1.5px solid rgb(0, 0, 0);
+}
+.scanner-content-table td:nth-child(8){
+  width: calc(100% /5);
+
+}
+.scanner-content-table td:nth-child(3) , td:nth-child(6) ,td:nth-child(7){
+  width: calc(100% /10);
+
+}
+.scanner-content-table td:nth-child(4) , td:nth-child(5){
+  width: calc(100% /13);
+
+}
+.scanner-content-table td:nth-child(1) , td:nth-child(2){
+  width: calc(100% /7);
+
+}
+.scanner-content-table td:nth-child(8) span {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+
+}
+
+.scanner-content-table td:nth-child(8) span.buyButt {
+  background-color: #2c7fd2;
+}
+.scanner-content-table td:nth-child(8) span.alarmButt {
+  background-color: black;
+}
+.scanner-content-table td:nth-child(8) span.sellButt {
+  background-color: #ff5f23;
+}
+
+/* ---------------------------------------- */
+
+.set-alarm {
+  background-color: #202634;
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 0;
+  position: relative;
+}
+
+.set-alarm .alarmbar {
+  position: relative;
+  width: 100%;
+  background-color: #293042;
+  display: inline-block;
+  text-align: center;
+  padding: 7px 0;
+  border-radius: 50px;
+  font-weight: 500;
+  color: orange;
+  font-size: 18px;
+}
+
+.set-alarm .setalertform {
+  position: relative;
+  width: 70%;
+  height: 200px;
+  background-color: #202634;
+  box-shadow: 0 0 5px 0px black inset;
+  border-radius: 10px;
+  padding: 10px 60px;
+  margin: 20px auto;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(21, 105, 216) rgb(255, 255, 255);
+}
+.set-alarm .setalertform input,
+textarea {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(0, 102, 255);
+  margin: 10px;
+  color: rgb(155, 155, 155);
+  font-size: 16px;
+  padding: 10px;
+  width:25%;
+
+}
+
+#set_alert {
+  position: absolute;
+  bottom: 20px;
+  float: right;
+  right: 20%;
+  background-color: rgb(0, 89, 255);
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  width: 15%;
+}
+#SYMBOL{
+float: left;
+/* left: 0; */
+}
+#ALERT_TYPE{
+  
+  float:left;
+  left : 35%;
+}
+#ALERT_PRICE{
+  float: left;
+  left : 65%;
+  
+}
+
+#MESSAGE {
+  width: 40%;
+  bottom:10px;
+}
+
+.set-alarm .aler_history {
+  position: absolute;
+  top: 280px;
+  background-color: #202634;
+  width: 98%;
+  height: calc(100% - 300px);
+  border-radius: 5px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(21, 105, 216) rgb(255, 255, 255);
+  box-shadow: 0 0 5px 0 black;
+  padding: 10px;
+}
+
+.set-alarm .aler_history table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.set-alarm .aler_history table thead {
+  position: sticky;
+  top: 0;
+}
+
+.set-alarm .aler_history table th {
+  margin: 0;
+  padding: 8px 0;
+  color: rgb(172, 172, 172);
+  background-color: #293042;
+}
+.set-alarm .aler_history table tr {
+  color: #949494;
+}
+.set-alarm .aler_history table > tbody > tr > td:nth-child(6),
+.set-alarm .aler_history table > tbody > tr > td:nth-child(7) {
+  padding: 10px;
+  cursor: pointer;
+}
+.set-alarm .aler_history table > tbody > tr > td:nth-child(7) {
+  /* background-color: rgb(17, 27, 49); */
+  color: rgb(255, 89, 0);
+}
+.set-alarm .aler_history table > tbody > tr > td:nth-child(6) {
+  /* background-color: rgb(20, 110, 245); */
+  color: rgb(255, 255, 255);
+}
+.set-alarm .aler_history table > tbody > tr > td:nth-child(5) {
+  max-width: 50px;
+  text-align: center;
+  overflow: hidden;
+}
+.set-alarm .aler_history table > tbody > tr > td > dfn {
+  padding: 10px;
+  cursor: pointer;
+}
+.set-alarm .aler_history table > tbody > tr > td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+}
+
+.trading-history {
+  background-color: #eba50f;
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+/* ------------------------------alert pop-up design ------------------------------ */
+
+
+.uper .popup {
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  background-color: rgb(107, 231, 75);
+  border-radius: 10px;
+  top: 25%;
+  left: 10%;
+  padding: 10px;
+  z-index: 30;
+}
+
+.lwer .popup{
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  background-color: rgb(223, 109, 2);
+  border-radius: 10px;
+  /* top: 55%; */
+  top: 25%;
+  left: 60%;
+  padding: 10px;
+  z-index: 30;
+
+}
+.popup.active{
+  cursor:move;
+  
+}
+
+.popup div.cross {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  z-index: 1;
+  border-radius: 10px 0 0 0;
+}
+
+.popup div i {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+.popup span i {
+  position: absolute;
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+.popup h6 {
+  position: relative;
+  display: block;
+  top: 100px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 50px;
+  margin: 5px;
+  font-size: 15px;
+}
+.popup h6 span {
+  color: rgb(255, 94, 0);
+  font-size: 20px;
+  cursor: pointer;
+
+}
+.popup > p {
+  font-size: 15px;
+  position: relative;
+  display: block;
+  top: 100px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-color: rgb(27, 100, 235);
+  padding: 5px;
+  border-radius:50px;
+  margin: 5px;
+}
+.popup p span {
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+.popup div {
+  position: relative;
+  display: block;
+  text-align: center;
+  top: 100px;
+  color: rgb(26, 25, 25);
+  padding: 10px;
+}

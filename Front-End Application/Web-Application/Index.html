@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trade Karo</title>
+    <link rel="stylesheet" href="beautifi.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="menulist">
+        <div id="logo"><span>#</span>Trader</div>
+
+        <ul class="sidemenu">
+          <li class="menu market active">
+            <i class="fas fa-poll"></i>
+            <p>Market Overview</p>
+            <span class="total-items">5</span>
+          </li>
+          <li class="menu buy">
+            <i class="fas fa-sort-amount-up"></i>
+            <p>Buy-Now</p>
+            <span class="total-items">5</span>
+          </li>
+          <li class="menu sell">
+            <i class="fas fa-sort-amount-down"></i>
+            <p>Sell-Now</p>
+            <span class="total-items">5</span>
+          </li>
+          <li class="menu buy_sell">
+            <i class="fas fa-arrows-alt-v"></i>
+            <p>Buy/Sell</p>
+            <span class="total-items">5</span>
+          </li>
+          <li class="menu alarms">
+            <i class="fas fa-bell"></i>
+            <p>Set Alerts</p>
+            <span class="total-items">5</span>
+          </li>
+          <li class="menu history">
+            <i class="fas fa-history"></i>
+            <p>Trading History</p>
+            <span class="total-items">5</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="board">
+        <div class="story nifty50">
+          <span class="txt">NIFTY-50</span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+        <div class="story sensex">
+          <span class="txt">SENSEX </span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+        <div class="story nifty500">
+          <span class="txt">NIFTY-500 </span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+        <div class="story niftymidcap50">
+          <span class="txt">NIFTY MID CAP 50</span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+        <div class="story niftysmallcap50">
+          <span class="txt">NIFTY SMALL CAP 50</span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+        <div class="story indiavix">
+          <span class="txt">INDIA VIX</span>
+          <div class="change">Chng<br /><span>5.12</span>%</div>
+          <div class="pre">Pre-Open : <text>1.25</text>%</div>
+        </div>
+      </div>
+
+      <div class="togglewindow">
+        <div class="market-overview">
+          <div class="indicetable">
+            <table>
+              <thead>
+                <tr>
+                  <th>BEARISH</th>
+                  <th>SECTORAL<br />INDICES</th>
+                  <th>BULLISH</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="balance">
+            <div class="amount">25000000</div>
+            <div class="label">Balance Available To Trade</div>
+          </div>
+
+          <div class="copy">
+            <butt class="clipboard">COPY</butt>
+            <span class="list">Nothing To Copy </span>
+          </div>
+
+          <div class="profit_loss"></div>
+
+          <div class="notes">
+            <div class="headbar">
+              NOTES
+              <input type="text" placeholder="Search" name="" id="" />
+
+              <i class="fas fa-plus-square"></i>
+            </div>
+          </div>
+
+          <div class="otherdetails">
+            <ul class="tabwrap">
+              <li class="tabitem">
+                <input type="radio" name="tabs" id="tab-result" checked />
+                <label for="tab-result">RESULT</label>
+                <div class="tabcontent"></div>
+              </li>
+              <li class="tabitem">
+                <input type="radio" name="tabs" id="tab-bonus" />
+                <label for="tab-bonus">BONUS</label>
+                <div class="tabcontent"></div>
+              </li>
+              <li class="tabitem">
+                <input type="radio" name="tabs" id="tab-dividend" />
+                <label for="tab-dividend">DIVIDEND</label>
+                <div class="tabcontent"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="buy-now">
+          <ul class="tab-wrap-buy">
+            <!-- <li>
+              <input type="radio" name="scanner-buy" id="name" checked />
+              <label for="name">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li>
+            <li>
+              <input type="radio" name="scanner-buy" id="name1"  />
+              <label for="name1">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td>abcdefghijklmno</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+
+        <div class="sell-now">
+          <ul class="tab-wrap-sell">
+            <!-- <li>
+              <input type="radio" name="scanner-sell" id="name2" checked />
+              <label for="name2">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                 
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li>
+            <li>
+              <input type="radio" name="scanner-sell" id="name3"  />
+              <label for="name3">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td>abcdefghijklmno</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+
+        <div class="buy-sell">
+          <ul class="tab-wrap-buy-sell">
+            <!-- <li>
+              <input type="radio" name="scanner-neutral" id="name4" checked />
+              <label for="name4">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                 
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+                <tr>
+                  <td>abcd</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li>
+            <li>
+              <input type="radio" name="scanner-neutral" id="name5"  />
+              <label for="name5">name<span>5</span></label>
+              <div class="scanner-content-table">
+              <table>
+              <thead>
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Sector</th>
+                            <th>LTP</th>
+                            <th>PRE-OPEN</th>
+                            <th>Change</th>
+                            <th>Quantity</th>
+                            <th>Vol. Gap</th>
+                            <th>Actions</th>
+                          </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td>abcdefghijklmno</td>
+                  <td>AUTO</td>
+                  <td>45000.89</td>
+                  <td>-2.39%</td>
+                  <td>10.89</td>
+                  <td>1500</td>
+                  <td>-58987956</td>
+                  <td>
+                    <span class="buyButt">BUY</span>
+                    <span class="alarmButt"><i class="fas fa-stopwatch"></i></span>
+                    <span class="sellButt">SELL</span>
+                  </td>
+                </tr>   
+              </tbody>
+              </table>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+
+        <div class="set-alarm">
+          <div class="alarmbar">SET ALARM</div>
+          <div class="setalertform">
+            <input
+              type="text"
+              id="SYMBOL"
+              placeholder="SYMBOL"
+              required="required"
+            />
+
+            <input
+              type="number"
+              id="ALERT_PRICE"
+              placeholder="ALERT PRICE"
+              required="required"
+            />
+
+            <input
+              list="TYPE"
+              id="ALERT_TYPE"
+              placeholder="ALERT TYPE"
+              required="required"
+            />
+            <datalist id="TYPE">
+              <option value="Crossing-Up"></option>
+              <option value="Crossing-Down"></option>
+            </datalist>
+
+            <textarea
+              id="MESSAGE"
+              placeholder="MESSAGE IF ANY"
+              required="required"
+            ></textarea>
+
+            <input
+              type="submit"
+              id="set_alert"
+              value="SET ALERT"
+              required="required"
+            />
+          </div>
+          <div class="aler_history">
+            <table>
+              <thead>
+                <tr>
+                  <th>SYMBOL</th>
+                  <th>TARGET</th>
+                  <th>L.T.P.</th>
+                  <th>ALERT TYPE</th>
+                  <th>MESSAGE</th>
+                  <th>EDIT</th>
+                  <th>DELETE</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="trading-history">
+          <ul class="tab-history"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="uper"></div>
+    <div class="lwer"></div>
+
+    <script src="./ticker.js"></script>
+    <script src="manage.js"></script>
+  </body>
+</html>

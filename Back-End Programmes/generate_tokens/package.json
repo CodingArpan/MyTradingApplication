@@ -1,0 +1,16 @@
+{
+  "name": "generate_tokens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Token.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kiteconnect": "^4.0.0",
+    "puppeteer": "^10.4.0"
+  }
+}
