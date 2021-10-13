@@ -69,12 +69,12 @@ setInterval(() => {
             name['instrument_token'] = response[key].instrument_token;
             name['last_traded_price'] = response[key].last_price;
             let netChange;
-            if (response[key].net_change == 0){
-                 netChange = Number(((100 * (response[key].last_price - response[key].ohlc.close)) / response[key].ohlc.close).toFixed(2));
-            }else{
+            if (response[key].net_change == 0) {
+                netChange = Number(((100 * (response[key].last_price - response[key].ohlc.close)) / response[key].ohlc.close).toFixed(2));
+            } else {
                 netChange = Number(((response[key].net_change).toFixed(2)));
             }
-            name['change'] = netChange ;
+            name['change'] = netChange;
             name['pre_open_change'] = Number(((100 * (response[key].ohlc.open - response[key].ohlc.close)) / response[key].ohlc.close).toFixed(2));
             name['open'] = response[key].ohlc.open;
             name['high'] = response[key].ohlc.high;
@@ -107,6 +107,7 @@ setInterval(() => {
 
             }
             name['sector'] = sectorname;
+            name['last_traded_quantity'] = response[key].last_quantity;
 
 
 

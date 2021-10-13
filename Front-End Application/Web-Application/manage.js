@@ -5,6 +5,7 @@ const live_balance = 'http://localhost:3300/live_balance';
 const requiredstockdata = 'http://localhost:3300/requiredmarketdata';
 const session = 'http://localhost:3300/sessions';
 let audio = new Audio('NBUK26X-alarm.mp3');
+let clickSound = new Audio('clickProcessed.wav');
 
 
 (async function () {
@@ -165,12 +166,12 @@ async function getIntradayData() {
         const setalertbutton = document.querySelector('.container .togglewindow .set-alarm .setalertform input#set_alert');
         if (NewIntraList.includes(val)) {
             typealert.style.border = "1px solid green";
-            console.log(val);
+            // console.log(val);
             setalertbutton.style.visibility = "visible";
 
         } else {
             typealert.style.border = "1px solid red";
-            console.log(val);
+            // console.log(val);
 
             setalertbutton.style.visibility = "hidden";
 
@@ -185,6 +186,8 @@ const tradablesymbol = document.querySelector('.container .togglewindow .market-
 tradablesymbol.addEventListener('click', function () {
     navigator.clipboard.writeText(document.querySelector('.container .togglewindow .market-overview .copy span').innerHTML);
     tradablesymbol.innerHTML = "COPIED !!";
+    clickSound.play();
+
     setTimeout(() => {
         tradablesymbol.innerHTML = 'COPY';
     }, 1000);
@@ -360,7 +363,8 @@ async function filter_show_Streak_Alert_stocks() {
 
                         }
                     } else {
-                        alert(`stock data is not available for ${element}`);
+                        // alert(`stock data is not available for ${element}`);
+                        console.log(`stock data is not available for ${element}`);
                     }
 
                 }
@@ -389,7 +393,9 @@ async function filter_show_Streak_Alert_stocks() {
 
                         }
                     } else {
-                        alert(`stock data is not available for ${element}`);
+                        // alert(`stock data is not available for ${element}`);
+                        console.log(`stock data is not available for ${element}`);
+
                     }
 
                 }
@@ -417,7 +423,9 @@ async function filter_show_Streak_Alert_stocks() {
 
                         }
                     } else {
-                        alert(`stock data is not available for ${element}`);
+                        // alert(`stock data is not available for ${element}`);
+                        console.log(`stock data is not available for ${element}`);
+
                     }
 
                 }
@@ -464,9 +472,9 @@ async function filter_show_Streak_Alert_stocks() {
                     // console.log(QualifiedStocks[key][item]);
                     const symbol = QualifiedStocks[key][item];
                     const rows = document.createElement('tr');
-                    const rowid = `${item}_${key.replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_')}`;
+                    const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
                     rows.setAttribute('id', rowid);
-                    // rows.setAttribute('');
+                    rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                     rows.innerHTML = `
                           <td>${item}</td>
                           <td>${symbol.sector}</td>
@@ -509,6 +517,9 @@ async function filter_show_Streak_Alert_stocks() {
                         for (const item in QualifiedStocks[key]) {
                             const symbol = QualifiedStocks[key][item];
                             const rows = document.createElement('tr');
+                            const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
+                            rows.setAttribute('id', rowid);
+                            rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                             rows.innerHTML = `
                           <td>${item}</td>
                           <td>${symbol.sector}</td>
@@ -578,6 +589,9 @@ async function filter_show_Streak_Alert_stocks() {
                     // console.log(QualifiedStocks[key][item]);
                     const symbol = QualifiedStocks[key][item];
                     const rows = document.createElement('tr');
+                    const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
+                    rows.setAttribute('id', rowid);
+                    rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                     rows.innerHTML = `
                           <td>${item}</td>
                           <td>${symbol.sector}</td>
@@ -622,6 +636,9 @@ async function filter_show_Streak_Alert_stocks() {
                             // console.log(QualifiedStocks[key][item]);
                             const symbol = QualifiedStocks[key][item];
                             const rows = document.createElement('tr');
+                            const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
+                            rows.setAttribute('id', rowid);
+                            rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                             rows.innerHTML = `
                           <td>${item}</td>
                           <td>${symbol.sector}</td>
@@ -692,6 +709,9 @@ async function filter_show_Streak_Alert_stocks() {
                     // console.log(QualifiedStocks[key][item]);
                     const symbol = QualifiedStocks[key][item];
                     const rows = document.createElement('tr');
+                    const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
+                    rows.setAttribute('id', rowid);
+                    rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                     rows.innerHTML = `
                           <td>${item}</td>
                           <td>${symbol.sector}</td>
@@ -735,6 +755,9 @@ async function filter_show_Streak_Alert_stocks() {
                             // console.log(QualifiedStocks[key][item]);
                             const symbol = QualifiedStocks[key][item];
                             const rows = document.createElement('tr');
+                            const rowid = `${item}_${key.replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_').replace(' ', '_')}`;
+                            rows.setAttribute('id', rowid);
+                            rows.setAttribute('onclick', 'showDetailInformation(this.id)');
                             rows.innerHTML = `
                                   <td>${item}</td>
                                   <td>${symbol.sector}</td>
@@ -821,6 +844,7 @@ async function filter_show_Streak_Alert_stocks() {
         item.style.color = "black";
         item.style.backgroundColor = "#FFA500";
         item.style.fontWeight = 'bold';
+        clickSound.play();
 
         setTimeout(function () {
             item.style.backgroundColor = "";
@@ -838,6 +862,7 @@ async function filter_show_Streak_Alert_stocks() {
         item.style.color = "black";
         item.style.backgroundColor = "#FFA500";
         item.style.fontWeight = 'bold';
+        clickSound.play();
 
         setTimeout(function () {
             item.style.backgroundColor = "";
@@ -855,46 +880,42 @@ async function filter_show_Streak_Alert_stocks() {
         const num = Number(item.innerHTML);
 
         if (num > 0) {
-            item.style.color = "#37ff05";
+            item.style.color = "#4987ee";
 
         } else if (num < 0) {
-            item.style.color = "#ff0565";
+            item.style.color = "#e25f5b";
         }
 
     })
+
     gapColor.forEach((item) => {
         const num = Number(item.innerHTML);
 
         if (num > 0) {
-            item.style.color = "#37ff05";
+            item.style.color = "#4987ee";
 
         } else if (num < 0) {
-            item.style.color = "#ff0565";
+            item.style.color = "#e25f5b";
         }
 
     })
+
     Ord_diffColor.forEach((item) => {
         const num = Number(item.innerHTML);
 
         if (num > 0) {
-            item.style.color = "#37ff05";
+            item.style.color = "#4987ee";
 
         } else if (num < 0) {
-            item.style.color = "#ff0565";
+            item.style.color = "#e25f5b";
         }
 
     })
 
 
-
-
-
-
-
-
 }
 filter_show_Streak_Alert_stocks();
-// setInterval(filter_show_Streak_Alert_stocks, 1000);
+setInterval(filter_show_Streak_Alert_stocks, 1000);
 
 
 
@@ -938,6 +959,8 @@ set_alert.addEventListener('click', function () {
     ALERT_TYPE.value = '';
     MESSAGE.value = '';
     // console.log(alertObj);
+    clickSound.play();
+
 
 })
 
@@ -964,7 +987,6 @@ async function alertcontrol() {
             const ALERT_PRICE = elem['ALERT_PRICE'];
             // requireddata.forEach((element) => {***************************
             for (const symbol in requireddata) {
-
 
                 const datasymb = symbol;
                 const ltp = requireddata[symbol].last_traded_price;
@@ -1117,6 +1139,8 @@ async function alertcontrol() {
             // })**********************************
             const LTP = elem['LTP'];
             const alertRow = document.createElement("tr");
+            alertRow.setAttribute('id', `${elem['SYMBOL']}_${elem['ALERT_PRICE'].toString().replace('.', '_')}`)
+            alertRow.setAttribute('onclick', 'showDetailInformation(this.id)')
             alertRow.innerHTML = `<td>${elem['SYMBOL']}</td>
         <td>${elem['ALERT_PRICE']}</td>
         <td>${elem['LTP']}</td>
@@ -1239,6 +1263,8 @@ function alertclosingbutton(idname) {
     const type = idname.querySelector('h6').innerHTML.replace('&amp;', '&');
     prevent2ndtimealert(type);
     idname.remove();
+    clickSound.play();
+
     // console.log('item removed');
 
 }
@@ -1258,18 +1284,216 @@ function ringBell() {
 // --------------------------------------- Alarm tab configuration **END** --------------------------------------------
 
 
+const InfoDiv = document.getElementById('DetailInformation');
+function onDrag({ movementX: e, movementY: r }) {
+    let getStyle = window.getComputedStyle(InfoDiv);
+    // console.log(getStyle);
+    let Lft = parseInt(getStyle.left);
+    let toop = parseInt(getStyle.top);
+    let botm = parseInt(getStyle.bottom);
+    // console.log(e, r);
+    InfoDiv.style.bottom = `${botm - r}px`;
+    InfoDiv.style.left = `${Lft + e}px`;
+    // InfoDiv.style.top = `${toop + r}px`;
+
+}
+
+
+InfoDiv.addEventListener('mousedown', () => {
+    InfoDiv.classList.add("draging");
+    const tagetdiv = document.getElementById('DetailInformation');
+    tagetdiv.style.transition = 'none';
+    InfoDiv.addEventListener('mousemove', onDrag);
+});
+
+document.addEventListener("mouseup", () => {
+    InfoDiv.classList.remove("draging");
+    InfoDiv.removeEventListener("mousemove", onDrag);
+});
+
+
+function showDetailInformation(id) {
+    let reqSymbol = id.split('_')[0];
+    // console.log(reqSymbol);
+    const query = document.getElementById('query');
+    query.innerHTML = reqSymbol;
+    clickSound.play();
+    const tagetdiv = document.getElementById('DetailInformation');
+    tagetdiv.style.transition = 'all 0.5s ease-out 0s';
+    tagetdiv.style.bottom = '0';
+    // tagetdiv.style.transition = 'none';
+
+}
+
+
+async function updatedetailinfo() {
+    const reqSymbol = document.getElementById('query').innerHTML.replace('&amp;', '&');
+    // console.log(typeof (reqSymbol));
+    if (reqSymbol == '') {
+        // console.log('not found');
+
+    } else {
+
+        const response = await fetch(requiredstockdata);
+        const bulkData = await response.json();
+        // console.log(bulkData);
+
+        for (const key in bulkData) {
+            if (key == reqSymbol) {
+                // console.log(bulkData[key]);
+                const stockData = bulkData[key];
+                const cash = Number(document.querySelector('.amount').innerHTML);
+                const dailystuff = document.querySelector('#DetailInformation .dailystuff');
+                dailystuff.innerHTML = `
+        <div class="left">
+      <table>
+        <!-- <thead></thead> -->
+        <tbody>
+          <tr>
+            <td>symbol</td>
+            <td>${key}</td>
+          </tr>
+          <tr>
+            <td>ltp</td>
+            <td>${stockData.last_traded_price}</td>
+          </tr>
+          <tr>
+            <td>change</td>
+            <td>${stockData.change}%</td>
+          </tr>
+          <tr>
+            <td>open</td>
+            <td>${stockData.open}</td>
+          </tr>
+          <tr>
+            <td>high</td>
+            <td>${stockData.high}</td>
+          </tr>
+          <tr>
+            <td>ucl</td>
+            <td>${stockData.upper_circuit_limit}</td>
+          </tr>
+          <tr>
+            <td>ltq</td>
+            <td>${stockData.last_traded_quantity}</td>
+          </tr>
+          <tr>
+            <td>vol. gap</td>
+            <td>${stockData.buy_sell_order_diff}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="right">
+      <table>
+        <!-- <thead></thead> -->
+        <tbody>
+          <tr>
+            <td>inst. no.</td>
+            <td>${stockData.instrument_token}</td>
+          </tr>
+          <tr>
+            <td>avg. price</td>
+            <td>${stockData.average_price}</td>
+          </tr>
+
+          <tr>
+            <td>pre-mar. gap</td>
+            <td>${stockData.pre_open_change}%</td>
+          </tr>
+          <tr>
+            <td>prev. close</td>
+            <td>${stockData.prev_close}</td>
+          </tr>
+          <tr>
+            <td>low</td>
+            <td>${stockData.low}</td>
+          </tr>
+          <tr>
+            <td>lcl</td>
+            <td>${stockData.lower_circuit_limit}</td>
+          </tr>
+          <tr>
+            <td>margin</td>
+            <td>${stockData.margin_multiplier}10</td>
+          </tr>
+          <tr>
+            <td>quantity</td>
+            <td>${((cash * stockData.margin_multiplier) / stockData.last_traded_price).toFixed(0)}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bottom">
+      <span class="week"><p>52 weeks</p></span>
+      <div class="design">
+        <div class="indicator"></div>
+      </div>
+      <span class="lp">81000.59</span>
+      <span class="hp">81059.59</span>
+      <span class="low">low</span>
+      <span class="high">high</span>
+    </div>
+
+
+        `;
+                const buymarketdepthlist = document.querySelector('#DetailInformation .marketdepth .ask table tbody');
+                let buyrows = '';
+                stockData.market_depth_buy.forEach((item) => {
+                    buyrows += `
+            <tr>
+            <td>${item.price}</td>
+            <td>${item.orders}</td>
+            <td>${item.quantity}</td>
+            </tr>
+            `;
+
+                })
+                // console.log(buyrows);
+                buymarketdepthlist.innerHTML = buyrows;
+                const buymarketdepthtotal = document.querySelector('#DetailInformation .marketdepth .ask table tfoot tr td:nth-child(2)');
+                buymarketdepthtotal.innerHTML = stockData.total_buy_quantity;
+                const sellmarketdepthtotal = document.querySelector('#DetailInformation .marketdepth .offer table tfoot tr td:nth-child(2)');
+                sellmarketdepthtotal.innerHTML = stockData.total_sell_quantity;
+                const sellmarketdepthlist = document.querySelector('#DetailInformation .marketdepth .offer table tbody');
+                let sellrows = '';
+                stockData.market_depth_sell.forEach((item) => {
+                    sellrows += `
+            <tr>
+            <td>${item.price}</td>
+            <td>${item.orders}</td>
+            <td>${item.quantity}</td>
+            </tr>
+            `;
+
+                })
+                // console.log(sellrows);
+                sellmarketdepthlist.innerHTML = sellrows;
 
 
 
 
+            }
+
+        }
+    }
 
 
+}
+updatedetailinfo();
+setInterval(updatedetailinfo, 1000);
 
+function cleardetailInfo() {
+    const tagetdiv = document.getElementById('DetailInformation');
+    const query = document.getElementById('query');
+    query.innerHTML = '';
+    tagetdiv.style.transition = 'all 0.5s ease-out 0s';
+    tagetdiv.style.bottom = '300%';
+    tagetdiv.style.left = '10%';
+    // tagetdiv.style.transition = 'none';
+    clickSound.play();
 
-
-
-
-
+}
 
 
 

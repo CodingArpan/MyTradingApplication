@@ -7,6 +7,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  scrollbar-color: rgb(70, 69, 69) rgb(0, 0, 0);
 }
 
 body {
@@ -243,7 +245,7 @@ ul.sidemenu li.active::before {
 }
 .togglewindow .market-overview .balance .amount {
   position: absolute;
-  bottom:10px;
+  bottom: 10px;
   width: 100%;
   height: 60%;
   font-size: 35px;
@@ -541,23 +543,23 @@ ul[class*="tab-wrap"] input[type="radio"]:checked ~ .scanner-content-table {
 td {
   padding: 10px;
   text-align: center;
-  border-bottom: 1.5px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgba(0, 81, 255, 0.589);
 }
-.scanner-content-table td:nth-child(8){
-  width: calc(100% /5);
-
+.scanner-content-table td:nth-child(8) {
+  width: calc(100% / 5);
 }
-.scanner-content-table td:nth-child(3) , td:nth-child(6) ,td:nth-child(7){
-  width: calc(100% /10);
-
+.scanner-content-table td:nth-child(3),
+td:nth-child(6),
+td:nth-child(7) {
+  width: calc(100% / 10);
 }
-.scanner-content-table td:nth-child(4) , td:nth-child(5){
-  width: calc(100% /13);
-
+.scanner-content-table td:nth-child(4),
+td:nth-child(5) {
+  width: calc(100% / 13);
 }
-.scanner-content-table td:nth-child(1) , td:nth-child(2){
-  width: calc(100% /7);
-
+.scanner-content-table td:nth-child(1),
+td:nth-child(2) {
+  width: calc(100% / 7);
 }
 .scanner-content-table td:nth-child(8) span {
   margin: 0 10px;
@@ -565,7 +567,6 @@ td {
   border-radius: 5px;
   color: rgb(255, 255, 255);
   font-weight: 600;
-
 }
 
 .scanner-content-table td:nth-child(8) span.buyButt {
@@ -626,8 +627,7 @@ textarea {
   color: rgb(155, 155, 155);
   font-size: 16px;
   padding: 10px;
-  width:25%;
-
+  width: 25%;
 }
 
 #set_alert {
@@ -644,24 +644,22 @@ textarea {
   color: white;
   width: 15%;
 }
-#SYMBOL{
-float: left;
-/* left: 0; */
-}
-#ALERT_TYPE{
-  
-  float:left;
-  left : 35%;
-}
-#ALERT_PRICE{
+#SYMBOL {
   float: left;
-  left : 65%;
-  
+  /* left: 0; */
+}
+#ALERT_TYPE {
+  float: left;
+  left: 35%;
+}
+#ALERT_PRICE {
+  float: left;
+  left: 65%;
 }
 
 #MESSAGE {
   width: 40%;
-  bottom:10px;
+  bottom: 10px;
 }
 
 .set-alarm .aler_history {
@@ -682,6 +680,7 @@ float: left;
   border-collapse: collapse;
   width: 100%;
 }
+
 .set-alarm .aler_history table thead {
   position: sticky;
   top: 0;
@@ -693,8 +692,10 @@ float: left;
   color: rgb(172, 172, 172);
   background-color: #293042;
 }
+
 .set-alarm .aler_history table tr {
   color: #949494;
+  cursor: pointer;
 }
 .set-alarm .aler_history table > tbody > tr > td:nth-child(6),
 .set-alarm .aler_history table > tbody > tr > td:nth-child(7) {
@@ -730,9 +731,7 @@ float: left;
   border-radius: 10px;
 }
 
-
 /* ------------------------------alert pop-up design ------------------------------ */
-
 
 .uper .popup {
   position: absolute;
@@ -746,7 +745,7 @@ float: left;
   z-index: 30;
 }
 
-.lwer .popup{
+.lwer .popup {
   position: absolute;
   width: 400px;
   height: 350px;
@@ -757,11 +756,9 @@ float: left;
   left: 60%;
   padding: 10px;
   z-index: 30;
-
 }
-.popup.active{
-  cursor:move;
-  
+.popup.active {
+  cursor: move;
 }
 
 .popup div.cross {
@@ -805,7 +802,6 @@ float: left;
   color: rgb(255, 94, 0);
   font-size: 20px;
   cursor: pointer;
-
 }
 .popup > p {
   font-size: 15px;
@@ -816,7 +812,7 @@ float: left;
   color: rgb(255, 255, 255);
   background-color: rgb(27, 100, 235);
   padding: 5px;
-  border-radius:50px;
+  border-radius: 50px;
   margin: 5px;
 }
 .popup p span {
@@ -830,4 +826,256 @@ float: left;
   top: 100px;
   color: rgb(26, 25, 25);
   padding: 10px;
+}
+
+/* ----------------------DetailInformation design------------------------------ */
+
+#DetailInformation {
+  z-index: 10;
+  position: absolute;
+  width: 80%;
+  height: 45%;
+  bottom: 300%;
+  /* top: 50%; */
+  left: 10%;
+  /* background-color: #000000; */
+  background-color: #14171d;
+  border-radius: 15px;
+  border: 1px solid #4079ff;
+  padding: 10px;
+  box-shadow: 0 0 30px rgb(0, 0, 0);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(3, 48, 116) rgb(0, 0, 0);
+  display: grid;
+  grid-template-columns: repeat(20, auto);
+  grid-template-rows: repeat(2, 100%);
+  gap: 20px;
+  transition: none;
+  /* transition: all 0.5s ease-out 0s; */
+}
+.draging {
+  cursor: move;
+}
+#DetailInformation > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #0077ff;
+  font-size: 25px;
+  padding: 6px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 10px 0;
+  z-index: 2;
+  cursor: pointer;
+}
+#DetailInformation > div {
+  position: relative;
+  border-radius: 20px;
+  /* background-color:#a2a3a5; */
+  background-color: #14171d;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+}
+
+#DetailInformation div.dailystuff {
+  grid-column: 1 / 13;
+  grid-row: 1 / 2;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: 70% 30%;
+  row-gap: 15px;
+  /* gap: 5px; */
+}
+
+#DetailInformation div.dailystuff > div {
+  /* background-color:#000000; */
+}
+
+div.dailystuff > div.left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding: 5px;
+  border-bottom: 1px solid #000000;
+
+  /* border-right: 1px solid #505050; */
+}
+div.dailystuff table {
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+div.dailystuff table tr td {
+  width: 50%;
+  text-transform: uppercase;
+  color: rgb(179, 179, 179);
+  text-align: left;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  border-bottom: none;
+}
+
+div.dailystuff > div.right {
+  padding: 5px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  border-bottom: 1px solid #000000;
+}
+div.dailystuff > div.bottom {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  /* background-color:black; */
+  color: #dfe4e9;
+  position: relative;
+  padding: 5px;
+}
+
+div.bottom > .week p {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+div.bottom span.low {
+  position: absolute;
+  display: block;
+  float: left;
+  bottom: 0px;
+  left: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+div.bottom span.high {
+  position: absolute;
+  display: block;
+  float: right;
+  bottom: 0;
+  right: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+
+div.bottom span.lp {
+  position: absolute;
+  display: block;
+  float: left;
+  bottom: 18px;
+  left: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+div.bottom span.hp {
+  position: absolute;
+  display: block;
+  float: right;
+  bottom: 18px;
+  right: 0;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+div.bottom .design {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  /* background-color: white; */
+  bottom: -30%;
+}
+
+div.bottom .design .indicator {
+  position: absolute;
+  background: rgb(255, 64, 42);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 64, 42, 1) 0%,
+    rgba(89, 212, 38, 1) 100%
+  );
+  border-radius: 10px;
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+}
+
+#DetailInformation div.marketdepth {
+  grid-column: 13 / 21;
+  grid-row: 1 / 2;
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: 100%;
+  border-radius: 5px 5px 20px 20px;
+  /* row-gap: 15px; */
+}
+
+div.marketdepth .ask {
+  grid-column: 1/2;
+  grid-row: 1 / 2;
+}
+div.marketdepth .offer {
+  grid-column: 2/3;
+  grid-row: 1 / 2;
+}
+div.marketdepth table {
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+div.marketdepth table tr td {
+  width: auto;
+  text-transform: uppercase;
+  color: rgb(179, 179, 179);
+  text-align: left;
+  padding: 0;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  border-bottom: none;
+  /* border: 1px solid white; */
+  text-align: center;
+}
+div.marketdepth .ask table {
+  border-right: 5px solid black;
+}
+div.marketdepth .ask table tbody tr td {
+  color: #4987ee;
+}
+div.marketdepth .ask table tfoot tr td {
+  color: #4987ee;
+}
+
+div.marketdepth .offer table tbody tr td {
+  color: #e25f5b;
+}
+div.marketdepth .offer table tfoot tr td {
+  color: #e25f5b;
+}
+
+div.marketdepth table thead {
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+}
+div.marketdepth table tfoot {
+  /* background-color:rgb(0, 0, 0); */
+  border-top: 4px solid rgb(0, 0, 0);
+  border-radius: 50px;
+}
+
+#DetailInformation div.fundamentals {
+  grid-column: 1 / 11;
+  grid-row: 2 / 3;
+}
+
+#DetailInformation div.highlights {
+  grid-column: 11 / 21;
+  grid-row: 2 / 3;
 }
