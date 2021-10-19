@@ -20,9 +20,48 @@ let clickSound = new Audio('clickProcessed.wav');
     ticker.connect();
     ticker.on("ticks", onTicks);
     ticker.on("connect", subscribe);
+    const indices = {
+        "263433": "NIFTY AUTO",
+        "260105": "NIFTY BANK",
+        "257545": "NIFTY CONSUMPTION",
+        "261641": "NIFTY ENERGY",
+        "257801": "NIFTY FIN SERVICE",
+        "261897": "NIFTY FMCG",
+        "261385": "NIFTY INFRA",
+        "259849": "NIFTY IT",
+        "263945": "NIFTY MEDIA",
+        "263689": "NIFTY METAL",
+        "260873": "NIFTY MIDCAP 50",
+        "262409": "NIFTY PHARMA",
+        "262665": "NIFTY PSE",
+        "262921": "NIFTY PSU BANK",
+        "271113": "NIFTY PVT BANK",
+        "261129": "NIFTY REALTY",
+        "263177": "NIFTY SERV SECTOR",
+    };
+    const indxnamearr = [];
+    for (const indx in indices) {
+        const InDx = indices[indx];
+        indxnamearr.push(InDx);
+    }
+    indxnamearr.sort();
+    // console.log(indxnamearr);
+    let allrows = '';
+    for (let i = 0; i < indxnamearr.length; i++) {
+        const InDxID = indxnamearr[i].replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '');
+        // console.log(InDxID);
+        allrows += `
+                    <tr id=${InDxID}>
+                    <td><div class="bearish progress_bar"></div></td>
+                  <td>${indxnamearr[i]}</td>
+                  <td><div class="bullish progress_bar"></div></td>
+                  </tr>`;
+    }
+    document.querySelector('.container .indicetable tbody').innerHTML = allrows;
 
     function onTicks(ticks) {
         // console.log("Ticks", ticks);
+
         const board = document.querySelector('.container > .board');
         ticks.forEach((item) => {
             if (item.instrument_token == 256265) {
@@ -47,6 +86,33 @@ let clickSound = new Audio('clickProcessed.wav');
                 board.querySelector('.indiavix > .pre text').innerHTML = ((100 * (item.ohlc.open - item.ohlc.close)) / item.ohlc.close).toFixed(2);
             }
         })
+
+        ticks.forEach((item) => {
+            const token = item.instrument_token;
+            // console.log(token);
+            // console.log(indices[token.toString()]);
+            for (const key in indices) {
+                if (key == token) {
+                    const indice = indices[token.toString()].replace(' ', '').replace(' ', '').replace(' ', '').replace(' ', '');
+                    const targetrow = document.getElementById(indice);
+                    // console.log(targetrow);
+                    const chng = (item.change).toFixed(2);
+                    const newWidth = ((100 * (Math.abs(chng))) / 5);
+                    if (item.change > 0) {
+                        const rowchng = targetrow.querySelector('.bullish.progress_bar');
+                        rowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
+                    } else if (item.change < 0) {
+                        const rowchng = targetrow.querySelector('.bearish.progress_bar');
+                        rowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
+                    }
+
+
+                }
+
+            }
+
+        })
+
         const story = document.querySelectorAll('.container > .board .story');
         story.forEach((item) => {
             const chng = Number(item.querySelector('.change span').innerHTML);
@@ -76,34 +142,7 @@ let clickSound = new Audio('clickProcessed.wav');
 
         })
 
-
     }
-
-    // instrument_token = INDEX
-    // 264969=INDIA VIX
-    // 260617=NIFTY 100
-    // 264457=NIFTY 200
-    // 256265=NIFTY 50
-    // 268041=NIFTY 500
-    // 263433=NIFTY AUTO***
-    // 260105=NIFTY BANK***
-    // 257545=NIFTY CONSUMPTION
-    // 261641=NIFTY ENERGY***
-    // 257801=NIFTY FIN SERVICE***
-    // 261897=NIFTY FMCG***
-    // 261385=NIFTY INFRA
-    // 259849=NIFTY IT***
-    // 263945=NIFTY MEDIA***
-    // 263689=NIFTY METAL***
-    // 260873=NIFTY MIDCAP 50
-    // 262409=NIFTY PHARMA***
-    // 262665=NIFTY PSE
-    // 262921=NIFTY PSU BANK***
-    // 271113=NIFTY PVT BANK***
-    // 261129=NIFTY REALTY***
-    // 263177=NIFTY SERV SECTOR
-    // 266761=NIFTY SMLCAP 50
-    // 265=SENSEX
 
     function subscribe() {
         var items = [264969,
@@ -134,6 +173,27 @@ let clickSound = new Audio('clickProcessed.wav');
         ticker.subscribe(items);
         ticker.setMode(ticker.modeFull, items);
     }
+    function indexcomparision() {
+        const bearNum= document.querySelector('.container .indicetable thead th:nth-child(1) span').innerHTML;
+        const bullNum= document.querySelector('.container .indicetable thead th:nth-child(3) span').innerHTML;
+        let bullQuan = 0;
+        let bearQuan = 0;
+        const rows =document.querySelectorAll('.container .indicetable tbody tr');
+        rows.forEach((item)=>{ 
+            const bear = item.querySelector('.bearish.progress_bar').innerHTML;
+            const bull = item.querySelector('.bullish.progress_bar').innerHTML;
+            if(bull.includes('span')){
+                bullQuan += 1;
+            }else if(bear.includes('span')){
+                bearQuan += 1;
+            }
+        })
+        document.querySelector('.container .indicetable thead th:nth-child(1) span').innerHTML = bearQuan;
+        document.querySelector('.container .indicetable thead th:nth-child(3) span').innerHTML = bullQuan;
+
+    }
+    indexcomparision();
+    setInterval(indexcomparision, 1000);
 })()
 
 
@@ -840,7 +900,7 @@ async function filter_show_Streak_Alert_stocks() {
     const Copysymls = document.querySelectorAll(".scanner-content-table>table>tbody> tr>td:nth-child(1)");
     Copysymls.forEach((item) => item.addEventListener('click', function () {
         navigator.clipboard.writeText(item.innerHTML.replace('&amp;', '&'));
-        item.style.borderRadius = '20px';
+        // item.style.borderRadius = '20px';
         item.style.color = "black";
         item.style.backgroundColor = "#FFA500";
         item.style.fontWeight = 'bold';
@@ -858,7 +918,7 @@ async function filter_show_Streak_Alert_stocks() {
     CopyQuan.forEach((item) => item.addEventListener('click', function () {
         navigator.clipboard.writeText(item.innerHTML);
 
-        item.style.borderRadius = '20px';
+        // item.style.borderRadius = '20px';
         item.style.color = "black";
         item.style.backgroundColor = "#FFA500";
         item.style.fontWeight = 'bold';
@@ -1141,7 +1201,7 @@ async function alertcontrol() {
             const alertRow = document.createElement("tr");
             alertRow.setAttribute('id', `${elem['SYMBOL']}_${elem['ALERT_PRICE'].toString().replace('.', '_')}`)
             alertRow.setAttribute('onclick', 'showDetailInformation(this.id)')
-            alertRow.innerHTML = `<td>${elem['SYMBOL']}</td>
+            alertRow.innerHTML = `<td onclick='copyText(this)'>${elem['SYMBOL']}</td>
         <td>${elem['ALERT_PRICE']}</td>
         <td>${elem['LTP']}</td>
         <td>${elem['ALERT_TYPE']}</td>
@@ -1351,7 +1411,7 @@ async function updatedetailinfo() {
         <tbody>
           <tr>
             <td>symbol</td>
-            <td>${key}</td>
+            <td onclick='copyText(this)'>${key}</td>
           </tr>
           <tr>
             <td>ltp</td>
@@ -1419,7 +1479,7 @@ async function updatedetailinfo() {
           </tr>
           <tr>
             <td>quantity</td>
-            <td>${((cash * stockData.margin_multiplier) / stockData.last_traded_price).toFixed(0)}</td>
+            <td onclick='copyText(this)'>${((cash * stockData.margin_multiplier) / stockData.last_traded_price).toFixed(0)}</td>
           </tr>
         </tbody>
       </table>
@@ -1495,15 +1555,24 @@ function cleardetailInfo() {
 
 }
 
+function copyText(element) {
+    console.log(element);
+    navigator.clipboard.writeText(element.innerHTML.replace('&amp;', '&'));
+    // element.style.borderRadius = '20px';
+    element.style.color = "black";
+    element.style.backgroundColor = "#FFA500";
+    element.style.fontWeight = 'bold';
+    clickSound.play();
+
+    setTimeout(function () {
+        element.style.backgroundColor = "";
+        element.style.fontWeight = 'normal';
+        // element.style.borderRadius = '0px';
+        element.style.color = '';
+    }, 1000)
 
 
-
-
-
-
-
-
-
+}
 
 
 

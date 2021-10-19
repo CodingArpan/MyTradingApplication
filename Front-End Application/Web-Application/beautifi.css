@@ -5,6 +5,18 @@
   font-family: sans-serif, Noto Sans, Open Sans, Nunito;
 }
 
+:root{
+  --bull-fnt-color:rgb(56, 204, 107) ;
+  --bull-bkg-color:rgba(75, 191, 116, 0.192) ;
+  --bear-fnt-color:rgb(217, 83, 79) ;
+  --bear-bkg-color:rgba(217, 84, 79, 0.137) ;
+  --dark-bkg:#202634 ;
+  --light-bkg:#293042;
+  --complete-black:#0d0d0d;
+  --wh-txt-color1:rgb(148, 148, 148);
+  --wh-txt-color2:rgb(199, 199, 199);
+}
+
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -12,7 +24,7 @@ html {
 }
 
 body {
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   user-select: none;
 }
 
@@ -21,7 +33,7 @@ body {
   top: 0;
   left: 0;
   padding: 0;
-  background-color: #0d0d0d;
+  background-color: var(--complete-black);
   width: 260px;
   height: 100%;
   box-shadow: 0 0 0 8px #1f85f6;
@@ -90,7 +102,7 @@ ul.sidemenu li.active::after {
   content: "";
   width: 30px;
   height: 30px;
-  background-color: #0d0d0d;
+  background-color: var(--complete-black);
   /* background-color: #f5f5f5; */
   position: absolute;
   bottom: -30px;
@@ -102,7 +114,7 @@ ul.sidemenu li.active::before {
   content: "";
   width: 30px;
   height: 30px;
-  background-color: #0d0d0d;
+  background-color: var(--complete-black);
   /* background-color: #ffffff; */
   position: absolute;
   top: -30px;
@@ -127,7 +139,7 @@ ul.sidemenu li.active::before {
   position: relative;
   width: 230px;
   height: 90px;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   margin: 10px 5px;
   border-radius: 10px;
   flex-shrink: 1;
@@ -187,7 +199,7 @@ ul.sidemenu li.active::before {
   position: absolute;
   width: calc(100vw - 290px);
   height: calc(100vh - 140px);
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   box-shadow: 0 0 10px 0 #00000079;
   left: 280px;
   top: 125px;
@@ -197,7 +209,7 @@ ul.sidemenu li.active::before {
   grid-template-rows: repeat(6, 1fr);
 }
 .market-overview {
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   /* background-color: #12285a; */
   grid-row: 1 / 7;
   grid-column: 1 / 7;
@@ -213,7 +225,7 @@ ul.sidemenu li.active::before {
 .togglewindow .market-overview .indicetable {
   grid-row: 1/31;
   grid-column: 1/8;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
 }
 .market-overview .indicetable table {
@@ -231,15 +243,34 @@ ul.sidemenu li.active::before {
   padding: 5px;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.315);
-  color: rgb(148, 148, 148);
+  color: var(--wh-txt-color1);
   font-size: 15px;
+  background-color:var(--light-bkg);
+
+  
+}
+.market-overview .indicetable table thead tr th:nth-child(1) span{
+  margin: 0 3px;
+ padding: 1px 5px;
+ color: var(--bear-fnt-color);
+ background-color:var(--bear-bkg-color);
+ border-radius: 5px;
+ font-weight: 500;
+}
+.market-overview .indicetable table thead tr th:nth-child(3) span{
+  margin: 0 3px;
+ padding: 1px 5px;
+ color: var(--bull-fnt-color);
+ background-color:var(--bull-bkg-color);
+ border-radius: 5px;
+ font-weight: 500;
 }
 
 .togglewindow .market-overview .balance {
   position: relative;
   grid-row: 1/4;
   grid-column: 8/11;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
   padding: 5px;
 }
@@ -250,7 +281,7 @@ ul.sidemenu li.active::before {
   height: 60%;
   font-size: 35px;
   text-align: center;
-  color: rgb(211, 211, 211);
+  color: var(--wh-txt-color2);
   padding: 5px;
   margin: auto;
 }
@@ -260,7 +291,7 @@ ul.sidemenu li.active::before {
   /* bottom:0; */
   font-size: 12px;
   text-align: center;
-  color: rgb(165, 165, 165);
+  color: var(--wh-txt-color1);
   /* border-top: 1px solid rgba(0, 0, 0, 0.479); */
 }
 
@@ -270,7 +301,7 @@ ul.sidemenu li.active::before {
   position: relative;
   grid-row: 1/4;
   grid-column: 11/21;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
   padding: 3px;
 }
@@ -278,8 +309,8 @@ ul.sidemenu li.active::before {
 .togglewindow .market-overview .copy .clipboard {
   position: relative;
   float: left;
-  background-color: #202634;
-  color: rgb(189, 189, 189);
+  background-color: var(--dark-bkg);
+  color: var(--wh-txt-color2);
   width: 20%;
   height: 85%;
   padding: 2% 0;
@@ -305,24 +336,24 @@ ul.sidemenu li.active::before {
 .togglewindow .market-overview .profit_loss {
   grid-row: 4/15;
   grid-column: 8/15;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
 }
 .togglewindow .market-overview .notes {
   grid-row: 4/15;
   grid-column: 15/21;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
   padding: 5px;
 }
 .togglewindow .market-overview .notes .headbar {
   position: relative;
   width: 100%;
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   text-align: center;
   line-height: 30px;
   border-radius: 10px 10px 0 0;
-  color: rgb(168, 166, 166);
+  color: var(--wh-txt-color1);
 }
 .togglewindow .market-overview .notes .headbar i {
   position: relative;
@@ -341,7 +372,7 @@ ul.sidemenu li.active::before {
   background-color: transparent;
   /* font-size: 20px; */
   cursor: pointer;
-  color: rgb(172, 172, 172);
+  color: var(--wh-txt-color2);
 }
 
 /* -------------------------------------------- */
@@ -349,7 +380,7 @@ ul.sidemenu li.active::before {
 .togglewindow .market-overview .otherdetails {
   grid-row: 15/31;
   grid-column: 8/21;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   border-radius: 10px;
   padding: 5px;
 }
@@ -373,7 +404,7 @@ ul.sidemenu li.active::before {
 .otherdetails .tabwrap li.tabitem label {
   display: inline-block;
   background-color: #0d47a1;
-  color: rgb(158, 158, 158);
+  color: var(--wh-txt-color1);
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 10px 10px 0 0;
@@ -381,7 +412,7 @@ ul.sidemenu li.active::before {
 }
 
 .otherdetails .tabwrap li.tabitem .tabcontent {
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   padding: 5px;
   border-radius: 0 10px 10px 10px;
   position: absolute;
@@ -394,8 +425,8 @@ ul.sidemenu li.active::before {
   overflow: auto;
 }
 .tabwrap input[id^="tab"]:checked + label {
-  background-color: #202634;
-  color: rgb(216, 216, 216);
+  background-color: var(--dark-bkg);
+  color: var(--wh-txt-color2);
   transition: 0.2s;
 }
 .tabwrap input[id^="tab"]:checked ~ .tabcontent {
@@ -406,21 +437,21 @@ ul.sidemenu li.active::before {
 /* ------------------------------------------------ */
 
 .buy-now {
-  background-color: #293042;
+  background-color: var(--dark-bkg);
   grid-row: 1 / 7;
   grid-column: 1 / 7;
   padding: 10px;
   border-radius: 10px;
 }
 .sell-now {
-  background-color: #293042;
+  background-color: var(--dark-bkg);
   grid-row: 1 / 7;
   grid-column: 1 / 7;
   padding: 10px;
   border-radius: 10px;
 }
 .buy-sell {
-  background-color: #293042;
+  background-color: var(--dark-bkg);
   grid-row: 1 / 7;
   grid-column: 1 / 7;
   padding: 10px;
@@ -446,7 +477,7 @@ ul[class*="tab-wrap"] li {
   display: block;
 }
 ul[class*="tab-wrap"] label {
-  background-color: #202634;
+  background-color: var(--light-bkg);
   display: inline-block;
   padding: 12px 20px;
   margin: 0 15px 0 0;
@@ -582,7 +613,7 @@ td:nth-child(2) {
 /* ---------------------------------------- */
 
 .set-alarm {
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   grid-row: 1 / 7;
   grid-column: 1 / 7;
   padding: 10px;
@@ -594,7 +625,7 @@ td:nth-child(2) {
 .set-alarm .alarmbar {
   position: relative;
   width: 100%;
-  background-color: #293042;
+  background-color: var(--light-bkg);
   display: inline-block;
   text-align: center;
   padding: 7px 0;
@@ -608,7 +639,7 @@ td:nth-child(2) {
   position: relative;
   width: 70%;
   height: 200px;
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   box-shadow: 0 0 5px 0px black inset;
   border-radius: 10px;
   padding: 10px 60px;
@@ -665,7 +696,7 @@ textarea {
 .set-alarm .aler_history {
   position: absolute;
   top: 280px;
-  background-color: #202634;
+  background-color: var(--dark-bkg);
   width: 98%;
   height: calc(100% - 300px);
   border-radius: 5px;
@@ -690,7 +721,7 @@ textarea {
   margin: 0;
   padding: 8px 0;
   color: rgb(172, 172, 172);
-  background-color: #293042;
+  background-color: var(--light-bkg);
 }
 
 .set-alarm .aler_history table tr {
@@ -831,7 +862,7 @@ textarea {
 /* ----------------------DetailInformation design------------------------------ */
 
 #DetailInformation {
-  z-index: 10;
+  z-index: 5;
   position: absolute;
   width: 80%;
   height: 45%;
@@ -918,6 +949,13 @@ div.dailystuff table tr td {
   font-weight: normal;
   letter-spacing: 1px;
   border-bottom: none;
+}
+
+div.dailystuff div.left table tr:nth-child(1) td:nth-child(2) {
+cursor: pointer;
+}
+div.dailystuff div.right table tr:nth-child(8) td:nth-child(2) {
+cursor: pointer;
 }
 
 div.dailystuff > div.right {
@@ -1079,3 +1117,127 @@ div.marketdepth table tfoot {
   grid-column: 11 / 21;
   grid-row: 2 / 3;
 }
+
+
+/* --------------------------------------calculator design------------------------------------- */
+
+
+.indicetable{
+  overflow:auto;
+  scrollbar-width: none;
+  scrollbar-color: rgb(21, 105, 216) rgb(255, 255, 255);
+
+}
+
+.togglewindow .market-overview .indicetable table tbody tr{
+  width: 100%;
+  height:80px;
+  padding:5px 0;
+}
+.indicetable table tbody td{
+  border-bottom-color: black;
+}
+
+.indicetable table tbody td:nth-child(2){
+  width: 25%;
+  color: rgb(214, 214, 214);
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing:1.5px;
+  line-height:20px;
+  
+}
+.indicetable table tbody td:nth-child(1){
+  /* background-color:brown; */
+  padding-left:5px ;
+}
+.indicetable table tbody td:nth-child(3){
+  padding-right:5px;
+
+}
+
+
+.indicetable table tbody td div.progress_bar{
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background-color: #0000005d;
+  border-radius: 5px;
+  /* padding:1.5px; */
+  
+}
+.indicetable table tbody td div.progress_bar span{
+position: absolute;
+/* z-index: 1; */
+width: 80%;
+height: 100%;
+border-radius: 5px;
+/* left: 0; */
+
+}
+
+.indicetable table tbody td div.progress_bar.bearish span{
+background-color:#B45126;
+right:0;
+}
+.indicetable table tbody td div.progress_bar.bullish span{
+background-color:#49C12D;
+left:0;
+}
+
+.indicetable table tbody td div.progress_bar.bullish span::before{
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  top: -8px;
+  right: 0;
+  border: 7px solid transparent;
+  border-bottom-width:0px;
+  border-right-width: 0px;
+  border-top-color: #48c12d;
+}
+.indicetable table tbody td div.progress_bar.bullish span::after{
+  position: absolute;
+  /* content: "2.39%"; */
+  content:attr(data-content);
+  top: -28px;
+  right: 0;
+  background-color:#48c12d2f;
+  color: #2fff00;
+  font-size: 15px;
+  font-weight: normal;
+  padding:1px 5px;
+  border-radius: 3px;
+  
+}
+
+
+.indicetable table tbody td div.progress_bar.bearish span::before{
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  top: -8px;
+  left: 0;
+  border: 7px solid transparent;
+  border-bottom-width:0px;
+  border-left-width: 0px;
+  border-top-color: #B45126;
+}
+.indicetable table tbody td div.progress_bar.bearish span::after{
+  position: absolute;
+  /* content: "2.39%"; */
+  content:attr(data-content);
+  top: -28px;
+  left: 0;
+  background-color:#b451262a;
+  color: #ff4d00;
+  font-size: 15px;
+  font-weight: normal;
+  padding:1px 5px;
+  border-radius: 3px;
+  
+}
+
+
