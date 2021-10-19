@@ -496,7 +496,7 @@ ul[class*="tab-wrap"] label span {
   font-weight: 600;
 }
 ul[class*="tab-wrap"] .scanner-content-table {
-  background-color: #14171d;
+  background-color: var(--light-bkg);
   padding: 0px 0px;
   border-radius: 0 5px 5px 5px;
   position: absolute;
@@ -574,7 +574,7 @@ ul[class*="tab-wrap"] input[type="radio"]:checked ~ .scanner-content-table {
 td {
   padding: 10px;
   text-align: center;
-  border-bottom: 1px solid rgba(0, 81, 255, 0.589);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.589);
 }
 .scanner-content-table td:nth-child(8) {
   width: calc(100% / 5);

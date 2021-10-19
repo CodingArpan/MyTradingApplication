@@ -174,8 +174,6 @@ let clickSound = new Audio('clickProcessed.wav');
         ticker.setMode(ticker.modeFull, items);
     }
     function indexcomparision() {
-        const bearNum= document.querySelector('.container .indicetable thead th:nth-child(1) span').innerHTML;
-        const bullNum= document.querySelector('.container .indicetable thead th:nth-child(3) span').innerHTML;
         let bullQuan = 0;
         let bearQuan = 0;
         const rows =document.querySelectorAll('.container .indicetable tbody tr');
