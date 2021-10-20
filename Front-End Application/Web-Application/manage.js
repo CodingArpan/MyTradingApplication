@@ -99,11 +99,15 @@ let clickSound = new Audio('clickProcessed.wav');
                     const chng = (item.change).toFixed(2);
                     const newWidth = ((100 * (Math.abs(chng))) / 5);
                     if (item.change > 0) {
-                        const rowchng = targetrow.querySelector('.bullish.progress_bar');
-                        rowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
+                        const bullrowchng = targetrow.querySelector('.bullish.progress_bar');
+                        const bearrowchng = targetrow.querySelector('.bearish.progress_bar');
+                        bearrowchng.innerHTML = '';
+                        bullrowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
                     } else if (item.change < 0) {
-                        const rowchng = targetrow.querySelector('.bearish.progress_bar');
-                        rowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
+                        const bullrowchng = targetrow.querySelector('.bullish.progress_bar');
+                        const bearrowchng = targetrow.querySelector('.bearish.progress_bar');
+                        bearrowchng.innerHTML = `<span style="width:${newWidth}%;" data-content="${chng}"></span>`;
+                        bullrowchng.innerHTML = '';
                     }
 
 
@@ -176,13 +180,13 @@ let clickSound = new Audio('clickProcessed.wav');
     function indexcomparision() {
         let bullQuan = 0;
         let bearQuan = 0;
-        const rows =document.querySelectorAll('.container .indicetable tbody tr');
-        rows.forEach((item)=>{ 
+        const rows = document.querySelectorAll('.container .indicetable tbody tr');
+        rows.forEach((item) => {
             const bear = item.querySelector('.bearish.progress_bar').innerHTML;
             const bull = item.querySelector('.bullish.progress_bar').innerHTML;
-            if(bull.includes('span')){
+            if (bull.includes('span')) {
                 bullQuan += 1;
-            }else if(bear.includes('span')){
+            } else if (bear.includes('span')) {
                 bearQuan += 1;
             }
         })
@@ -314,6 +318,16 @@ async function sendingstockrequirements() {
 
     })
 
+    const querySym = document.querySelector('#query').innerHTML.replace('&amp;', '&');
+    if (tradable.includes(querySym)) {
+
+    } else if (querySym == '') {
+        // console.log(querySym);
+
+    } else {
+        tradable.push(querySym);
+    }
+
     const instruments = [];
     tradable.forEach((item) => {
         if (item.includes('&amp;')) {
@@ -422,7 +436,10 @@ async function filter_show_Streak_Alert_stocks() {
                         }
                     } else {
                         // alert(`stock data is not available for ${element}`);
-                        console.log(`stock data is not available for ${element}`);
+                        const now = new Date().toLocaleString("en-US", { timeZone: 'Asia/Kolkata', timeStyle: 'medium', hourCycle: 'h24' });
+                        const time = now.toString();
+                        // console.log(time);
+                        console.log(`data not available for ${element}---${time}`);
                     }
 
                 }
@@ -452,8 +469,10 @@ async function filter_show_Streak_Alert_stocks() {
                         }
                     } else {
                         // alert(`stock data is not available for ${element}`);
-                        console.log(`stock data is not available for ${element}`);
-
+                        const now = new Date().toLocaleString("en-US", { timeZone: 'Asia/Kolkata', timeStyle: 'medium', hourCycle: 'h24' });
+                        const time = now.toString();
+                        // console.log(time);
+                        console.log(`data not available for ${element}---${time}`);
                     }
 
                 }
@@ -482,7 +501,10 @@ async function filter_show_Streak_Alert_stocks() {
                         }
                     } else {
                         // alert(`stock data is not available for ${element}`);
-                        console.log(`stock data is not available for ${element}`);
+                        const now = new Date().toLocaleString("en-US", { timeZone: 'Asia/Kolkata', timeStyle: 'medium', hourCycle: 'h24' });
+                        const time = now.toString();
+                        // console.log(time);
+                        console.log(`data not available for ${element}---${time}`);
 
                     }
 
@@ -550,17 +572,7 @@ async function filter_show_Streak_Alert_stocks() {
                     buy_list.appendChild(rows);
 
                 }
-                // QualifiedStocks[key].forEach((element) => {
-                //     const rows = document.createElement('tr');
-                //     rows.innerHTML = `
-                //           <td>${element['Stock Symbol']}</td>
-                //           <td>${element['Last Traded Price']}</td>
-                //           <td>${element['Change']}</td>
-                //           <td>${element['Pre-Market Gap']}</td>
-                //           <td>${element['Tradable Quantity']}</td>
-                //           <td>${element['Total Buy Orders'] - element['Total Sell Orders']}</td>`
-                //     buy_list.appendChild(rows);
-                // })
+                //   console.log('ok');
                 buy_signals.appendChild(tabelem);
             } else {
                 for (let i = 0; i < tab.length; i++) {
@@ -568,6 +580,8 @@ async function filter_show_Streak_Alert_stocks() {
                     // console.log(tabmname, i);
                     // console.log(key);
                     if (tabmname.includes(key)) {
+                        tab[i].querySelector('label span').innerHTML = Object.keys(QualifiedStocks[key]).length;
+                        // console.log(Object.keys(QualifiedStocks[key]).length);
                         const target = tab[i].querySelector(`.scanner-content-table table`);
                         const list = target.children[1];
                         // console.log(list);
@@ -605,6 +619,8 @@ async function filter_show_Streak_Alert_stocks() {
                         //       <td>${element['Total Buy Orders'] - element['Total Sell Orders']}</td>`
                         //     tableBody.appendChild(rows);
                         // })
+                        //   console.log('ok');
+
                         target.replaceChild(tableBody, list);
 
 
@@ -683,9 +699,12 @@ async function filter_show_Streak_Alert_stocks() {
             } else {
                 for (let i = 0; i < tab.length; i++) {
                     const tabmname = tab[i].innerHTML;
+                
                     // console.log(tabmname, i);
                     // console.log(key);
                     if (tabmname.includes(key)) {
+                        tab[i].querySelector('label span').innerHTML = Object.keys(QualifiedStocks[key]).length;
+                        // console.log(Object.keys(QualifiedStocks[key]).length);
                         const target = tab[i].querySelector(`.scanner-content-table table`);
                         const list = target.children[1];
                         // console.log(list);
@@ -805,6 +824,8 @@ async function filter_show_Streak_Alert_stocks() {
                     // console.log(tabmname, i);
                     // console.log(key);
                     if (tabmname.includes(key)) {
+                        tab[i].querySelector('label span').innerHTML = Object.keys(QualifiedStocks[key]).length;
+                        // console.log(Object.keys(QualifiedStocks[key]).length);
                         const target = tab[i].querySelector(`.scanner-content-table table`);
                         const list = target.children[1];
                         // console.log(list);
@@ -1039,6 +1060,8 @@ async function alertcontrol() {
             alertObj = JSON.parse(alerts);
 
         }
+        // console.log(alertObj);
+        document.querySelector('.menu.alarms span').innerHTML = alertObj.length;
         const alertBody = document.createElement('tbody');
         alertObj.forEach((elem, index) => {
             const SYMBOL = elem['SYMBOL'];
@@ -1473,7 +1496,7 @@ async function updatedetailinfo() {
           </tr>
           <tr>
             <td>margin</td>
-            <td>${stockData.margin_multiplier}10</td>
+            <td>${stockData.margin_multiplier}</td>
           </tr>
           <tr>
             <td>quantity</td>

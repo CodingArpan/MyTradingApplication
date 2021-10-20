@@ -133,7 +133,7 @@ const fs = require('fs');
         // console.log(grabIntraDayLists);
 
 
-        res.write(JSON.stringify(intraday));
+        // res.write(JSON.stringify(intraday));
         console.log('list writeen on browser');
 
 
